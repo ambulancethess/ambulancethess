@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     // Mobile Menu Toggle
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
@@ -6,7 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileMenuToggle && mainNav) {
         mobileMenuToggle.addEventListener('click', () => {
             mainNav.classList.toggle('active');
+
             const icon = mobileMenuToggle.querySelector('i');
+
             if (mainNav.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-xmark');
@@ -21,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeMobileMenu() {
         if (mainNav && mainNav.classList.contains('active')) {
             mainNav.classList.remove('active');
+
             const icon = mobileMenuToggle.querySelector('i');
             icon.classList.remove('fa-xmark');
             icon.classList.add('fa-bars');
@@ -35,16 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
+
             if (targetId === '#') return;
 
             const targetElement = document.querySelector(targetId);
+
             if (targetElement) {
                 e.preventDefault();
 
                 // Close mobile menu if open
                 if (mainNav.classList.contains('active')) {
                     mainNav.classList.remove('active');
-                    mobileMenuToggle.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
+
+                    mobileMenuToggle
+                        .querySelector('i')
+                        .classList.replace('fa-xmark', 'fa-bars');
                 }
 
                 // Header offset
@@ -59,7 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Active link highlighting on scroll (only if on homepage)
-    const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('folder/') || !window.location.pathname.includes('.html');
+    const isHomePage =
+        window.location.pathname.endsWith('index.html') ||
+        window.location.pathname === '/' ||
+        window.location.pathname.endsWith('folder/') ||
+        !window.location.pathname.includes('.html');
 
     if (isHomePage) {
         const sections = document.querySelectorAll('section, footer');
@@ -84,10 +97,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
+
                 const href = link.getAttribute('href');
+
                 if ((href === '#' || href === 'index.html') && current === '') {
                     link.classList.add('active');
-                } else if ((href === '#' + current || href === 'index.html#' + current) && current !== '') {
+                } else if (
+                    (href === '#' + current || href === 'index.html#' + current) &&
+                    current !== ''
+                ) {
                     link.classList.add('active');
                 }
             });
@@ -96,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Contact Form Validation ──────────────────────────────────────
     const contactForm = document.getElementById('contactForm');
+
     if (!contactForm) return;
 
     // Detect Language
@@ -103,21 +122,65 @@ document.addEventListener('DOMContentLoaded', () => {
     const isEN = currentLang === 'en';
 
     const translations = {
-        name: isEN ? 'Please enter your full name.' : 'Παρακαλώ εισάγετε το ονοματεπώνυμό σας.',
-        phone: isEN ? 'Please enter a valid phone number.' : 'Παρακαλώ εισάγετε έναν έγκυρο αριθμό τηλεφώνου.',
-        email: isEN ? 'Please enter a valid email address.' : 'Παρακαλώ εισάγετε έγκυρο email.',
-        message: isEN ? 'Please write your message.' : 'Παρακαλώ γράψτε το μήνυμά σας.',
-        gdpr: isEN ? 'Please accept the data processing terms.' : 'Παρακαλώ αποδεχτείτε την επεξεργασία δεδομένων.',
-        sending: isEN ? 'Sending...' : 'Αποστολή...',
-        sendBtn: isEN ? 'Send Message' : 'Αποστολή Μηνύματος'
+        name: isEN
+            ? 'Please enter your full name.'
+            : 'Παρακαλώ εισάγετε το ονοματεπώνυμό σας.',
+
+        phone: isEN
+            ? 'Please enter a valid phone number.'
+            : 'Παρακαλώ εισάγετε έναν έγκυρο αριθμό τηλεφώνου.',
+
+        email: isEN
+            ? 'Please enter a valid email address.'
+            : 'Παρακαλώ εισάγετε έγκυρο email.',
+
+        message: isEN
+            ? 'Please write your message.'
+            : 'Παρακαλώ γράψτε το μήνυμά σας.',
+
+        gdpr: isEN
+            ? 'Please accept the data processing terms.'
+            : 'Παρακαλώ αποδεχτείτε την επεξεργασία δεδομένων.',
+
+        sending: isEN
+            ? 'Sending...'
+            : 'Αποστολή...',
+
+        sendBtn: isEN
+            ? 'Send Message'
+            : 'Αποστολή Μηνύματος'
     };
 
     const fields = {
-        name: { el: document.getElementById('cf-name'), err: document.getElementById('err-name'), msg: translations.name },
-        phone: { el: document.getElementById('cf-phone'), err: document.getElementById('err-phone'), msg: translations.phone },
-        email: { el: document.getElementById('cf-email'), err: document.getElementById('err-email'), msg: translations.email },
-        message: { el: document.getElementById('cf-message'), err: document.getElementById('err-message'), msg: translations.message },
-        gdpr: { el: document.getElementById('cf-gdpr'), err: document.getElementById('err-gdpr'), msg: translations.gdpr },
+        name: {
+            el: document.getElementById('cf-name'),
+            err: document.getElementById('err-name'),
+            msg: translations.name
+        },
+
+        phone: {
+            el: document.getElementById('cf-phone'),
+            err: document.getElementById('err-phone'),
+            msg: translations.phone
+        },
+
+        email: {
+            el: document.getElementById('cf-email'),
+            err: document.getElementById('err-email'),
+            msg: translations.email
+        },
+
+        message: {
+            el: document.getElementById('cf-message'),
+            err: document.getElementById('err-message'),
+            msg: translations.message
+        },
+
+        gdpr: {
+            el: document.getElementById('cf-gdpr'),
+            err: document.getElementById('err-gdpr'),
+            msg: translations.gdpr
+        }
     };
 
     const submitBtn = document.getElementById('cf-submit');
@@ -148,60 +211,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
+
         let valid = true;
 
         // Name
         if (fields.name.el.value.trim().length < 2) {
-            setError(fields.name); valid = false;
-        } else { clearError(fields.name); }
+            setError(fields.name);
+            valid = false;
+        } else {
+            clearError(fields.name);
+        }
 
         // Phone
         if (!validatePhone(fields.phone.el.value)) {
-            setError(fields.phone); valid = false;
-        } else { clearError(fields.phone); }
+            setError(fields.phone);
+            valid = false;
+        } else {
+            clearError(fields.phone);
+        }
 
         // Email (optional but validated if filled)
         const emailVal = fields.email.el.value.trim();
+
         if (emailVal && !validateEmail(emailVal)) {
-            setError(fields.email); valid = false;
-        } else { clearError(fields.email); }
+            setError(fields.email);
+            valid = false;
+        } else {
+            clearError(fields.email);
+        }
 
         // Message
         if (fields.message.el.value.trim().length < 5) {
-            setError(fields.message); valid = false;
-        } else { clearError(fields.message); }
+            setError(fields.message);
+            valid = false;
+        } else {
+            clearError(fields.message);
+        }
 
         // GDPR Checkbox
         if (!fields.gdpr.el.checked) {
-            setError(fields.gdpr); valid = false;
-        } else { clearError(fields.gdpr); }
+            setError(fields.gdpr);
+            valid = false;
+        } else {
+            clearError(fields.gdpr);
+        }
 
         if (!valid) return;
 
         // Loading state
         submitBtn.disabled = true;
-        submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${translations.sending}`;
+        submitBtn.innerHTML =
+            `<i class="fa-solid fa-spinner fa-spin"></i> ${translations.sending}`;
 
         // ── Send via EmailJS ───────────────────────────────────────────
-        // Συμπλήρωσε τα 3 παρακάτω με τα στοιχεία από το emailjs.com dashboard
-        const EMAILJS_SERVICE_ID = 'service_piekec9';   // π.χ. 'service_abc1234'
-        const EMAILJS_TEMPLATE_ID = 'template_0ugw3x9';  // π.χ. 'template_xyz9876'
-        const EMAILJS_PUBLIC_KEY = 'j36XFpjh9f_tNREyy'; // Account → API Keys
+        const EMAILJS_SERVICE_ID = 'service_piekec9';
+        const EMAILJS_TEMPLATE_ID = 'template_0ugw3x9';
+        const EMAILJS_PUBLIC_KEY = 'j36XFpjh9f_tNREyy';
 
-        emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm, EMAILJS_PUBLIC_KEY)
-            .then(() => {
-                // Επιτυχία
-                contactForm.style.display = 'none';
-                successBox.style.display = 'block';
-            })
-            .catch(() => {
-                // Σφάλμα
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> ${translations.sendBtn}`;
-                const errBanner = document.getElementById('form-send-error');
-                if (errBanner) errBanner.style.display = 'flex';
-            });
+        emailjs.sendForm(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            contactForm,
+            {
+                publicKey: EMAILJS_PUBLIC_KEY
+            }
+        )
+        .then(() => {
+            // Επιτυχία
+            contactForm.style.display = 'none';
+            successBox.style.display = 'block';
+        })
+        .catch(() => {
+            // Σφάλμα
+            submitBtn.disabled = false;
 
+            submitBtn.innerHTML =
+                `<i class="fa-solid fa-paper-plane"></i> ${translations.sendBtn}`;
+
+            const errBanner = document.getElementById('form-send-error');
+
+            if (errBanner) {
+                errBanner.style.display = 'flex';
+            }
+        });
 
     });
 
