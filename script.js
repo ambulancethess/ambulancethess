@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // ── Send via EmailJS ───────────────────────────────────────────
         // Συμπλήρωσε τα 3 παρακάτω με τα στοιχεία από το emailjs.com dashboard
         const EMAILJS_SERVICE_ID = 'service_piekec9';   // π.χ. 'service_abc1234'
-        const EMAILJS_TEMPLATE_ID = 'template_26bsn6w';  // π.χ. 'template_xyz9876'
+        const EMAILJS_TEMPLATE_ID = 'template_0ugw3x9';  // π.χ. 'template_xyz9876'
         const EMAILJS_PUBLIC_KEY = 'j36XFpjh9f_tNREyy'; // Account → API Keys
 
         emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm, EMAILJS_PUBLIC_KEY)
