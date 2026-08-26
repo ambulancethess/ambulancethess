@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // ── Send via EmailJS ───────────────────────────────────────────
         const EMAILJS_SERVICE_ID = 'service_piekec9';
         const EMAILJS_TEMPLATE_ID = 'template_0ugw3x9';
-        const EMAILJS_PUBLIC_KEY = 'j36XFpjh9f_tNREyy';
+        const EMAILJS_PUBLIC_KEY = 'RR9HrpFryARm3E4ya';
 
         emailjs.sendForm(
             EMAILJS_SERVICE_ID,
