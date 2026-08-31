@@ -259,9 +259,9 @@ document.addEventListener('DOMContentLoaded', () => {
             `<i class="fa-solid fa-spinner fa-spin"></i> ${translations.sending}`;
 
         // ── Send via EmailJS ───────────────────────────────────────────
-        const EMAILJS_SERVICE_ID = 'service_piekec9';
-        const EMAILJS_TEMPLATE_ID = 'template_0ugw3x9';
-        const EMAILJS_PUBLIC_KEY = 'RR9HrpFryARm3E4ya';
+        const EMAILJS_SERVICE_ID = 'service_7hifi3e';
+        const EMAILJS_TEMPLATE_ID = 'template_f5or64j';
+        const EMAILJS_PUBLIC_KEY = 'qkoQIl3F2Tkdt5MsP';
 
         emailjs.sendForm(
             EMAILJS_SERVICE_ID,
