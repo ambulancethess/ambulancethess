@@ -267,7 +267,9 @@ document.addEventListener('DOMContentLoaded', () => {
             EMAILJS_SERVICE_ID,
             EMAILJS_TEMPLATE_ID,
             contactForm,
-            EMAILJS_PUBLIC_KEY
+            {
+                publicKey: EMAILJS_PUBLIC_KEY
+            }
         )
         .then(() => {
 
